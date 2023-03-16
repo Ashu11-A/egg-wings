@@ -121,23 +121,23 @@ type RemoteQueryConfiguration struct {
 // SystemConfiguration defines basic system configuration settings.
 type SystemConfiguration struct {
 	// The root directory where all of the pterodactyl data is stored at.
-	RootDirectory string `default:"/var/lib/pterodactyl" yaml:"root_directory"`
+	RootDirectory string `default:"/home/container/" yaml:"root_directory"`
 
 	// Directory where logs for server installations and other wings events are logged.
-	LogDirectory string `default:"/var/log/pterodactyl" yaml:"log_directory"`
+	LogDirectory string `default:"/home/container/pterodactyl" yaml:"log_directory"`
 
 	// Directory where the server data is stored at.
-	Data string `default:"/var/lib/pterodactyl/volumes" yaml:"data"`
+	Data string `default:"/home/container/volumes" yaml:"data"`
 
 	// Directory where server archives for transferring will be stored.
-	ArchiveDirectory string `default:"/var/lib/pterodactyl/archives" yaml:"archive_directory"`
+	ArchiveDirectory string `default:"/home/container/archives" yaml:"archive_directory"`
 
 	// Directory where local backups will be stored on the machine.
-	BackupDirectory string `default:"/var/lib/pterodactyl/backups" yaml:"backup_directory"`
+	BackupDirectory string `default:"/home/container/backups" yaml:"backup_directory"`
 
 	// TmpDirectory specifies where temporary files for Pterodactyl installation processes
 	// should be created. This supports environments running docker-in-docker.
-	TmpDirectory string `default:"/tmp/pterodactyl" yaml:"tmp_directory"`
+	TmpDirectory string `default:"/home/container/tmp" yaml:"tmp_directory"`
 
 	// The user that should own all of the server files, and be used for containers.
 	Username string `default:"pterodactyl" yaml:"username"`
