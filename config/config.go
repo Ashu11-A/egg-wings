@@ -25,7 +25,7 @@ import (
 	"github.com/pterodactyl/wings/system"
 )
 
-const DefaultLocation = "/etc/pterodactyl/config.yml"
+const DefaultLocation = "/home/container/config.yml"
 
 // DefaultTLSConfig sets sane defaults to use when configuring the internal
 // webserver to listen for public connections.
@@ -572,12 +572,12 @@ func EnableLogRotation() error {
 		return nil
 	}
 
-	if st, err := os.Stat("/etc/logrotate.d"); err != nil && !os.IsNotExist(err) {
+	if st, err := os.Stat("/home/container/logrotate.d"); err != nil && !os.IsNotExist(err) {
 		return err
 	} else if (err != nil && os.IsNotExist(err)) || !st.IsDir() {
 		return nil
 	}
-	if _, err := os.Stat("/etc/logrotate.d/wings"); err == nil || !os.IsNotExist(err) {
+	if _, err := os.Stat("/home/container/logrotate.d/wings"); err == nil || !os.IsNotExist(err) {
 		return err
 	}
 
@@ -585,7 +585,7 @@ func EnableLogRotation() error {
 	// If we've gotten to this point it means the logrotate directory exists on the system
 	// but there is not a file for wings already. In that case, let us write a new file to
 	// it so files can be rotated easily.
-	f, err := os.Create("/etc/logrotate.d/wings")
+	f, err := os.Create("/home/container/logrotate.d/wings")
 	if err != nil {
 		return err
 	}
